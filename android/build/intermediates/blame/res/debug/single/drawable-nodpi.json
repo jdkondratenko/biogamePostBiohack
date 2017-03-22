@@ -2,5 +2,9 @@
     {
         "merged": "C:\\Users\\Julia\\AndroidStudioProjects\\superbiogame\\android\\build\\intermediates\\res\\merged\\debug\\drawable-nodpi\\ic_launcher.png",
         "source": "C:\\Users\\Julia\\AndroidStudioProjects\\superbiogame\\android\\res\\drawable-nodpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Julia\\AndroidStudioProjects\\biogamepostbiohack\\android\\build\\intermediates\\res\\merged\\debug\\drawable-nodpi\\ic_launcher.png",
+        "source": "C:\\Users\\Julia\\AndroidStudioProjects\\biogamepostbiohack\\android\\res\\drawable-nodpi\\ic_launcher.png"
     }
 ]
