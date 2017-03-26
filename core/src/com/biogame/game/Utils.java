@@ -23,7 +23,8 @@ public final class Utils {
 
     @NotNull
     public static String getStartGameMessage() {
-        return "Let’s align short DNA strand against \nlong one! Swipe left/right to place \nshort DNA in the best way. \n\n\n\n\nTap to start.";
+        return "Let’s align short DNA strand against \nlong one! Swipe left/right to place \nshort DNA in the best way. \n" +
+                "Long press to increase speed.\n\n\n\n\nTap to start.";
     }
 
     @NotNull

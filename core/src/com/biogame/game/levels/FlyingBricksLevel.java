@@ -67,7 +67,11 @@ public final class FlyingBricksLevel implements GameLevel {
     @NotNull
     private BioGame bioGame;
 
-    private float velocity = -300f;
+    private float WORLD_TO_BOX = .01f;
+    private float BOX_TO_WORLD = 100f;
+
+    private float start_velocity = -1.5f;
+    private float velocity = 0.0f;
 
     private final int width;
     private final int height;
@@ -274,7 +278,7 @@ public final class FlyingBricksLevel implements GameLevel {
 
         if (!hearts.isEmpty()) {
             levelNumberLabel.getStyle().font.draw(
-                    batch, "Level " + levelNumber.getNumber(), padding, hearts.get(0).body.getPosition().y - 70);
+                    batch, "Level " + levelNumber.getNumber(), padding, hearts.get(0).body.getPosition().y * BOX_TO_WORLD - 70);
             if (getLevelNumber() != FIRST) {
                 levelParticleEffect.update(Gdx.graphics.getDeltaTime());
                 levelParticleEffect.draw(batch);
@@ -288,7 +292,7 @@ public final class FlyingBricksLevel implements GameLevel {
         } else {
             final Body heart = hearts.get(0).body;
             scoreLabel.getStyle().font.draw(batch, String.valueOf(getScore()),
-                    (float) (width - tileSize * 2.5), heart.getPosition().y + tileSize / 1.3f);
+                    (float) (width - tileSize * 2.5), heart.getPosition().y * BOX_TO_WORLD + tileSize / 1.3f);
         }
 
         if (showMessage) {
@@ -329,7 +333,7 @@ public final class FlyingBricksLevel implements GameLevel {
         labelStyle.font.getData().setScale(4);
         levelNumberLabel = new Label("Level " + getLevelNumber().getNumber() + 1, labelStyle);
 
-        levelParticleEffect.getEmitters().first().setPosition(padding + 100, hearts.get(0).body.getPosition().y - 100);
+        levelParticleEffect.getEmitters().first().setPosition(padding + 100, hearts.get(0).body.getPosition().y * BOX_TO_WORLD - 100);
         levelParticleEffect.start();
     }
 
@@ -388,7 +392,7 @@ public final class FlyingBricksLevel implements GameLevel {
         }
 
         final int stopPositionCoef = reversed ? 2 : 1;
-        if (read.get(0).body.getPosition().y <= genome.get(0).body.getPosition().y * stopPositionCoef + tileSize) {
+        if (read.get(0).body.getPosition().y <= genome.get(0).body.getPosition().y * stopPositionCoef + tileSize * WORLD_TO_BOX) {
 
 
             final int addScore = countScore(getFullReadString(), reversed ? genomeHintString : genomeString, difficulty);
@@ -399,7 +403,7 @@ public final class FlyingBricksLevel implements GameLevel {
 
             if (madeMistake) {
                 failParticleEffect.getEmitters().first()
-                        .setPosition(centerTilePosition.x + tileSize / 2, centerTilePosition.y + tileSize / 2);
+                        .setPosition(centerTilePosition.x * BOX_TO_WORLD + tileSize / 2, centerTilePosition.y * BOX_TO_WORLD + tileSize / 2);
                 failParticleEffect.start();
 
                 if (loseMusic != null) {
@@ -412,7 +416,7 @@ public final class FlyingBricksLevel implements GameLevel {
                 }
             } else {
                 winParticleEffect.getEmitters().first()
-                        .setPosition(centerTilePosition.x + tileSize / 2, centerTilePosition.y + tileSize);
+                        .setPosition(centerTilePosition.x * BOX_TO_WORLD + tileSize / 2, centerTilePosition.y * BOX_TO_WORLD + tileSize);
                 winParticleEffect.start();
 
                 if (winMusic != null) {
@@ -422,7 +426,8 @@ public final class FlyingBricksLevel implements GameLevel {
                 if (levelScore == 5) {
                     bioGame.changeLevelToNext();
                 }
-                changeReadSpeed(velocity * 1.2f);
+                start_velocity = start_velocity * 1.1f;
+//                changeReadSpeed(velocity * 1.2f);
             }
 
             startPlaying();
@@ -448,7 +453,7 @@ public final class FlyingBricksLevel implements GameLevel {
     private int getFirstEntry() {
         int firstEntry = 0;
         for (int i = 0; i < genome.size(); i++) {
-            if (compare(read.get(0).body.getPosition().x, genome.get(i).body.getPosition().x) == 0) {
+            if (compare(Math.round(read.get(0).body.getPosition().x * 100d), Math.round(genome.get(i).body.getPosition().x * 100d) ) == 0) {
                 firstEntry = i;
                 break;
             }
@@ -509,11 +514,11 @@ public final class FlyingBricksLevel implements GameLevel {
                 final Tile tile = tileSequence.get(i);
                 final Texture texture = tile.texture;
                 final Vector2 position = tile.body.getPosition();
-                batch.draw(texture, position.x, position.y);
+                batch.draw(texture, position.x * BOX_TO_WORLD, position.y * BOX_TO_WORLD);
 
                 final int firstEntry = getFirstEntry();
                 if (mask && i >= firstEntry && i < firstEntry + 5) {
-                    batch.draw(Resources.mask, position.x, position.y);
+                    batch.draw(Resources.mask, position.x * BOX_TO_WORLD, position.y * BOX_TO_WORLD);
                 }
             }
         }
@@ -529,7 +534,7 @@ public final class FlyingBricksLevel implements GameLevel {
         body = world.createBody(bodyDef);
 
         final PolygonShape shape = new PolygonShape();
-        shape.setAsBox(tileSize, tileSize);
+        shape.setAsBox(tileSize * WORLD_TO_BOX, tileSize * WORLD_TO_BOX);
         body.createFixture(shape, 1);
         shape.dispose();
         body.getFixtureList().get(0).setSensor(true);
@@ -539,12 +544,12 @@ public final class FlyingBricksLevel implements GameLevel {
     @NotNull
     private ArrayList<Tile> createHearts() {
         final ArrayList<Tile> hearts = new ArrayList<Tile>();
-        int startPositionX = padding;
+        float startPositionX = padding * WORLD_TO_BOX;
         for (int i = 0; i < NUMBER_OF_HEARTS; i++) {
-            final Body body = createTile(startPositionX, height - tileSize * 2, true);
+            final Body body = createTile(startPositionX, (height - tileSize * 2) * WORLD_TO_BOX, true);
             final Tile tile = Tile.withHeart(body);
             hearts.add(tile);
-            startPositionX += tileSize;
+            startPositionX += (tileSize) * WORLD_TO_BOX;
         }
         return hearts;
     }
@@ -555,15 +560,16 @@ public final class FlyingBricksLevel implements GameLevel {
         readString = readSequence;
 
         final ArrayList<Tile> read = new ArrayList<Tile>();
-        final int startPositionY = height - tileSize * 2;
+        final float startPositionY = (height - tileSize * 2) * WORLD_TO_BOX;
 
-        int startPositionX = padding + tileSize * 4;
+        float startPositionX = (padding + (tileSize * 4)) * WORLD_TO_BOX;
 
         for (int i = 0; i < NUMBER_OF_TILES_IN_READ; i++) {
             final char nucleotide = readSequence.charAt(i);
             final Tile tile;
             final Body body = createTile(startPositionX, startPositionY, false);
-            body.setLinearVelocity(0, velocity);
+            body.setLinearVelocity(0, start_velocity);
+            velocity = start_velocity;
 
             switch (nucleotide) {
                 case 'A':
@@ -583,7 +589,7 @@ public final class FlyingBricksLevel implements GameLevel {
             }
 
             read.add(tile);
-            startPositionX += tileSize;
+            startPositionX += (tileSize) * WORLD_TO_BOX;
         }
 
         return read;
@@ -613,12 +619,12 @@ public final class FlyingBricksLevel implements GameLevel {
         final String genomeSequence = Generator.generateGenome(difficulty, readString, letterPermutation);
         final ArrayList<Tile> genome = new ArrayList<Tile>();
 
-        int startPositionX = padding;
+        float startPositionX = padding * WORLD_TO_BOX;
 
         for (int i = 0; i < NUMBER_OF_TILES_IN_GENOME; i++) {
             final char nucleotide = genomeSequence.charAt(i);
             final Tile tile;
-            final Body body = createTile(startPositionX, tileSize, true);
+            final Body body = createTile(startPositionX, tileSize * WORLD_TO_BOX, true);
 
             switch (nucleotide) {
                 case 'A':
@@ -638,7 +644,7 @@ public final class FlyingBricksLevel implements GameLevel {
             }
 
             genome.add(tile);
-            startPositionX += tileSize;
+            startPositionX += (tileSize) * WORLD_TO_BOX;
         }
 
         genomeString = genomeSequence;
@@ -672,12 +678,12 @@ public final class FlyingBricksLevel implements GameLevel {
         genomeHintString = reverseSequenceBuilder.toString();
         final ArrayList<Tile> genome = new ArrayList<Tile>();
 
-        int startPositionX = padding;
+        float startPositionX = padding * WORLD_TO_BOX;
 
         for (int i = 0; i < NUMBER_OF_TILES_IN_GENOME; i++) {
             final char nucleotide = genomeHintString.charAt(i);
             final Tile tile;
-            final Body body = createTile(startPositionX, tileSize * 2, true);
+            final Body body = createTile(startPositionX, tileSize * 2 * WORLD_TO_BOX, true);
 
             switch (nucleotide) {
                 case 'A':
@@ -697,7 +703,7 @@ public final class FlyingBricksLevel implements GameLevel {
             }
 
             genome.add(tile);
-            startPositionX += tileSize;
+            startPositionX += (tileSize) * WORLD_TO_BOX;
         }
 
         return genome;
@@ -725,6 +731,10 @@ public final class FlyingBricksLevel implements GameLevel {
 
         @Override
         public boolean longPress(float x, float y) {
+            winParticleEffect.getEmitters().first()
+                    .setPosition(read.get(2).body.getPosition().x * BOX_TO_WORLD + tileSize / 2, read.get(2).body.getPosition().y * BOX_TO_WORLD + tileSize);
+            winParticleEffect.start();
+            changeReadSpeed(velocity * 10);
             return false;
         }
 
@@ -748,9 +758,9 @@ public final class FlyingBricksLevel implements GameLevel {
             for (Tile tile : read) {
                 final Vector2 position = tile.body.getPosition();
                 if (deltaX > 0) {
-                    tile.body.setTransform(position.x + tileSize, position.y, 0);
+                    tile.body.setTransform(position.x + (tileSize * WORLD_TO_BOX), position.y, 0);
                 } else {
-                    tile.body.setTransform(position.x - tileSize, position.y, 0);
+                    tile.body.setTransform(position.x - (tileSize * WORLD_TO_BOX), position.y, 0);
                 }
             }
             lastTapTime = System.currentTimeMillis();
