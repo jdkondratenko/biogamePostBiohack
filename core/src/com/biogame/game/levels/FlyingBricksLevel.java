@@ -28,7 +28,7 @@ import com.biogame.game.BioGame;
 import com.biogame.game.Resources;
 import com.biogame.game.Utils;
 import com.biogame.game.model.Difficulty;
-import com.biogame.game.model.Generator;
+import com.biogame.game.model.Generator_new;
 import com.biogame.game.model.LetterPermutation;
 import com.biogame.game.model.Tile;
 
@@ -90,6 +90,7 @@ public final class FlyingBricksLevel implements GameLevel {
     private Label levelNumberLabel;
     private Label messageLabel;
 
+    private int subsublevel_count = 0;
     private int levelScore;
 
     private long lastTapTime;
@@ -192,7 +193,7 @@ public final class FlyingBricksLevel implements GameLevel {
     @NotNull
     @Override
     public String getBackgroundFileName() {
-        return "background_raw.png";
+        return "background_raw_small.png";
     }
 
     @NotNull
@@ -422,11 +423,16 @@ public final class FlyingBricksLevel implements GameLevel {
                 if (winMusic != null) {
                     winMusic.play();
                 }
-                levelScore++;
+
+                subsublevel_count++;
+                if (subsublevel_count % 3 == 0 && subsublevel_count != 0){
+                    levelScore++;
+                }
                 if (levelScore == 5) {
                     bioGame.changeLevelToNext();
+                    start_velocity = start_velocity * 1.1f;
                 }
-                start_velocity = start_velocity * 1.1f;
+
 //                changeReadSpeed(velocity * 1.2f);
             }
 
@@ -556,7 +562,7 @@ public final class FlyingBricksLevel implements GameLevel {
 
     @NotNull
     private ArrayList<Tile> createRead() {
-        final String readSequence = Generator.generateRead();
+        final String readSequence = Generator_new.generateRead();
         readString = readSequence;
 
         final ArrayList<Tile> read = new ArrayList<Tile>();
@@ -606,17 +612,17 @@ public final class FlyingBricksLevel implements GameLevel {
                 letterPermutation = LetterPermutation.MEDIUM;
                 break;
             case 2:
-                letterPermutation = LetterPermutation.HARD;
+                letterPermutation = LetterPermutation.MEDIUM;
                 break;
             case 3:
-                letterPermutation = LetterPermutation.VERY_HARD;
+                letterPermutation = LetterPermutation.HARD;
                 break;
             default:
                 letterPermutation = LetterPermutation.VERY_HARD;
                 break;
         }
 
-        final String genomeSequence = Generator.generateGenome(difficulty, readString, letterPermutation);
+        final String genomeSequence = Generator_new.generateGenome(difficulty, readString, letterPermutation, subsublevel_count);
         final ArrayList<Tile> genome = new ArrayList<Tile>();
 
         float startPositionX = padding * WORLD_TO_BOX;

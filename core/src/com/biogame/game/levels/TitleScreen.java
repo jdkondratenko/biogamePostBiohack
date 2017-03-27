@@ -32,7 +32,7 @@ public final class TitleScreen implements GameLevel {
     @NotNull
     @Override
     public String getBackgroundFileName() {
-        return "background_intro.png";
+        return "background_intro_2.png";
     }
 
     @NotNull
