@@ -96,10 +96,13 @@ public final class FlyingBricksLevel implements GameLevel {
 
     private long lastTapTime;
     private Texture reverseTexture;
+    private Texture noteTexture;
+    private Texture noteMutedTexture;
 
     private boolean gameover;
     private boolean reversed;
     private boolean showMessage;
+    private boolean muted = false;
 
     @NotNull
     private final String currentMessage;
@@ -212,6 +215,7 @@ public final class FlyingBricksLevel implements GameLevel {
         setupGameoverMessage();
         setupReverseButton();
         setupLevelLabel();
+        setupNoteButton();
 
         if (showMessage) {
             setupMessageLabel();
@@ -242,6 +246,14 @@ public final class FlyingBricksLevel implements GameLevel {
     public void deleteResources() {
         if (reverseTexture != null) {
             reverseTexture.dispose();
+        }
+
+        if (noteTexture != null) {
+            noteTexture.dispose();
+        }
+
+        if (noteMutedTexture != null) {
+            noteMutedTexture.dispose();
         }
 
         levelParticleEffect.dispose();
@@ -372,6 +384,29 @@ public final class FlyingBricksLevel implements GameLevel {
         }
     }
 
+    private void setupNoteButton() {
+            noteTexture = new Texture(Gdx.files.internal("note.png"));
+            noteMutedTexture = new Texture(Gdx.files.internal("note_muted.png"));
+            final TextureRegion textureRegion = new TextureRegion(noteTexture);
+            TextureRegionDrawable textureRegionDrawable = new TextureRegionDrawable(textureRegion);
+            final TextureRegion textureRegionDown = new TextureRegion(noteMutedTexture);
+            TextureRegionDrawable textureRegionDrawableDown = new TextureRegionDrawable(textureRegionDown);
+
+            final ImageButton imageButton = new ImageButton(textureRegionDrawable, textureRegionDrawableDown, textureRegionDrawableDown);
+            imageButton.setPosition(width - tileSize * 2f, height - tileSize * 3.5f);
+            imageButton.setSize(96, 96);
+
+            stage.addActor(imageButton);
+
+            imageButton.addListener(new ClickListener() {
+                @Override
+                public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                    muted = !muted;
+                    return false;
+                }
+            });
+    }
+
     private void setupGameoverMessage() {
         final LabelStyle labelStyle = new LabelStyle();
         labelStyle.font = new BitmapFont();
@@ -408,7 +443,7 @@ public final class FlyingBricksLevel implements GameLevel {
                         .setPosition(centerTilePosition.x * BOX_TO_WORLD + tileSize / 2, centerTilePosition.y * BOX_TO_WORLD + tileSize / 2);
                 failParticleEffect.start();
 
-                if (loseMusic != null) {
+                if (loseMusic != null && !muted) {
                     loseMusic.play();
                 }
                 decreaseHeartsNumber();
@@ -421,7 +456,7 @@ public final class FlyingBricksLevel implements GameLevel {
                         .setPosition(centerTilePosition.x * BOX_TO_WORLD + tileSize / 2, centerTilePosition.y * BOX_TO_WORLD + tileSize);
                 winParticleEffect.start();
 
-                if (winMusic != null) {
+                if (winMusic != null && !muted) {
                     winMusic.play();
                 }
 
