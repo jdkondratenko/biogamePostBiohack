@@ -39,6 +39,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import static com.biogame.game.Utils.getReplacementInDnaMessage;
+import static com.biogame.game.Utils.getMoreReplacementInDnaMessage;
 import static com.biogame.game.Utils.getReverseAlignMessage;
 import static com.biogame.game.Utils.getScore;
 import static com.biogame.game.Utils.getStartGameMessage;
@@ -162,7 +163,7 @@ public final class FlyingBricksLevel implements GameLevel {
 
     @NotNull
     public static FlyingBricksLevel thirdSublevel(@NotNull BioGame bioGame, @NotNull World world) {
-        return new FlyingBricksLevel(bioGame, world, new Difficulty(2, false, false, 40), THIRD, "");
+        return new FlyingBricksLevel(bioGame, world, new Difficulty(2, false, false, 40), THIRD, getMoreReplacementInDnaMessage());
     }
 
     @NotNull
@@ -756,7 +757,7 @@ public final class FlyingBricksLevel implements GameLevel {
             }
 
             if ((lastTapTime > System.currentTimeMillis() - 130 && (deltaX < 30 && deltaX > -30))
-                    || (compare(read.get(0).body.getPosition().x, genome.get(0).body.getPosition().x) == 0 && deltaX <= 0)
+                    || (compare(Math.round(read.get(0).body.getPosition().x), Math.round(genome.get(0).body.getPosition().x)) == 0 && deltaX <= 0)
                     || (compare(read.get(NUMBER_OF_TILES_IN_READ - 1).body.getPosition().x, genome.get(NUMBER_OF_TILES_IN_GENOME - 1).body.getPosition().x) == 0 && deltaX >= 0)) {
                 return false;
             }
