@@ -9,7 +9,7 @@ public final class Resources {
     }
 
     public static Texture heartTexture = new Texture(Gdx.files.internal("heart.png"));
-    public static Texture mask = new Texture(Gdx.files.internal("mask5.png"));
+    public static Texture mask = new Texture(Gdx.files.internal("mask.png"));
     public static Texture mask_black = new Texture(Gdx.files.internal("mask_black.png"));
 
     public static Texture tTexture = new Texture(Gdx.files.internal("t_nucleotide.png"));
