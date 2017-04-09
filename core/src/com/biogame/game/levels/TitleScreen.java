@@ -32,7 +32,7 @@ public final class TitleScreen implements GameLevel {
     @NotNull
     @Override
     public String getBackgroundFileName() {
-        return "background_intro.png";
+        return "intro_new_red.png";
     }
 
     @NotNull
@@ -50,12 +50,12 @@ public final class TitleScreen implements GameLevel {
     }
 
     private void setupButton() {
-        buttonTexture = new Texture(Gdx.files.internal("play.png"));
+        buttonTexture = new Texture(Gdx.files.internal("new_play_yellow.png"));
         final TextureRegionDrawable textureRegionDrawable = new TextureRegionDrawable(new TextureRegion(buttonTexture));
 
         final ImageButton imageButton = new ImageButton(textureRegionDrawable);
-        imageButton.setPosition(Gdx.graphics.getWidth() / 2 - 150, (float) (Gdx.graphics.getHeight() * 0.15));
-        imageButton.setSize(300, 100);
+        imageButton.setPosition(Gdx.graphics.getWidth() / 2 - 200, (float) (Gdx.graphics.getHeight() * 0.07));
+        imageButton.setSize(400, 200);
 
         stage.addActor(imageButton);
 
@@ -69,11 +69,11 @@ public final class TitleScreen implements GameLevel {
     }
 
     private void setupLogo() {
-        logoTexture = new Texture(Gdx.files.internal("logo.png"));
+        logoTexture = new Texture(Gdx.files.internal("logo_red.png"));
         final TextureRegionDrawable textureRegionDrawable = new TextureRegionDrawable(new TextureRegion(logoTexture));
 
         final Image image = new Image(textureRegionDrawable);
-        image.setPosition(Gdx.graphics.getWidth() / 2 - 250, (float) (Gdx.graphics.getHeight() * 0.5));
+        image.setPosition(Gdx.graphics.getWidth() / 2 - 250, (float) (Gdx.graphics.getHeight() * 0.47));
 
         stage.addActor(image);
     }
