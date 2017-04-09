@@ -9,20 +9,11 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_android_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_android_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_android_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_android_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_android_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_android_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/a_nucleotide.png" afterPath="$PROJECT_DIR$/android/assets/a_nucleotide.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/a_nucleotide_hint.png" afterPath="$PROJECT_DIR$/android/assets/a_nucleotide_hint.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/c_nucleotide.png" afterPath="$PROJECT_DIR$/android/assets/c_nucleotide.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/c_nucleotide_hint.png" afterPath="$PROJECT_DIR$/android/assets/c_nucleotide_hint.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/g_nucleotide.png" afterPath="$PROJECT_DIR$/android/assets/g_nucleotide.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/g_nucleotide_hint.png" afterPath="$PROJECT_DIR$/android/assets/g_nucleotide_hint.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/t_nucleotide.png" afterPath="$PROJECT_DIR$/android/assets/t_nucleotide.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/t_nucleotide_hint.png" afterPath="$PROJECT_DIR$/android/assets/t_nucleotide_hint.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/classes/main/com/biogame/game/levels/TitleScreen.class" afterPath="$PROJECT_DIR$/core/build/classes/main/com/biogame/game/levels/TitleScreen.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/classes/main/com/biogame/game/Utils.class" afterPath="$PROJECT_DIR$/core/build/classes/main/com/biogame/game/Utils.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/libs/core-1.0.jar" afterPath="$PROJECT_DIR$/core/build/libs/core-1.0.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/android.iml" afterPath="$PROJECT_DIR$/android/android.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/biogame/game/levels/TitleScreen.java" afterPath="$PROJECT_DIR$/core/src/com/biogame/game/levels/TitleScreen.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/biogame/game/Utils.java" afterPath="$PROJECT_DIR$/core/src/com/biogame/game/Utils.java" />
     </list>
     <ignored path="biogamepostbiohack.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -98,11 +89,9 @@
       <file leaf-file-name="Resources.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/com/biogame/game/Resources.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
+            <state relative-caret-position="-389">
               <caret line="11" column="69" selection-start-line="11" selection-start-column="69" selection-end-line="11" selection-end-column="69" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -122,16 +111,9 @@
       <file leaf-file-name="Utils.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/com/biogame/game/Utils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="25" column="45" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="52" />
-              <folding>
-                <element signature="e#198#199#0" expanded="false" />
-                <element signature="e#226#227#0" expanded="false" />
-                <element signature="e#262#263#0" expanded="false" />
-                <element signature="e#290#291#0" expanded="false" />
-                <element signature="e#339#340#0" expanded="false" />
-                <element signature="e#371#372#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="279">
+              <caret line="41" column="148" selection-start-line="41" selection-start-column="148" selection-end-line="41" selection-end-column="148" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -166,6 +148,10 @@
         <option value="ASClass" />
       </list>
     </option>
+  </component>
+  <component name="GenerateSignedApkSettings">
+    <option name="KEY_STORE_PATH" value="C:\Users\Julia\Desktop\pack1\android\android.jks" />
+    <option name="KEY_ALIAS" value="hellodna" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -2630,11 +2616,11 @@
       <list>
         <option value="$PROJECT_DIR$/core/src/com/biogame/game/BioGame.java" />
         <option value="$PROJECT_DIR$/core/src/com/biogame/game/model/Generator_new.java" />
-        <option value="$PROJECT_DIR$/core/src/com/biogame/game/Utils.java" />
         <option value="$PROJECT_DIR$/core/src/com/biogame/game/levels/FlyingBricksLevel.java" />
         <option value="$PROJECT_DIR$/core/src/com/biogame/game/Resources.java" />
         <option value="$PROJECT_DIR$/desktop/src/com/biogame/game/desktop/DesktopLauncher.java" />
         <option value="$PROJECT_DIR$/core/src/com/biogame/game/levels/TitleScreen.java" />
+        <option value="$PROJECT_DIR$/core/src/com/biogame/game/Utils.java" />
       </list>
     </option>
   </component>
@@ -2819,6 +2805,9 @@
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="device.picker.selection" value="042f120c2208de39" />
+    <property name="ExportApk.ApkPath" value="C:\Users\Julia\AndroidStudioProjects\biogamepostbiohack\android" />
+    <property name="ExportApk.Flavors" value="" />
+    <property name="ExportApk.BuildType" value="release" />
   </component>
   <component name="RunManager" selected="Android App.AndroidLauncher">
     <configuration default="false" name="DesktopLauncher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -3247,7 +3236,14 @@
       <option name="project" value="LOCAL" />
       <updated>1491323048261</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Edited some graphics">
+      <created>1491741474778</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1491741474779</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -3255,7 +3251,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25191677" sideWeight="0.51434034" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25191677" sideWeight="0.2829828" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -3274,7 +3270,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25191677" sideWeight="0.48565966" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25191677" sideWeight="0.71701723" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998747" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -3339,7 +3335,8 @@
     <MESSAGE value="Set up mute button" />
     <MESSAGE value="Enhanced some graphics" />
     <MESSAGE value="Delete unnecessary stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="Delete unnecessary stuff" />
+    <MESSAGE value="Edited some graphics" />
+    <option name="LAST_COMMIT_MESSAGE" value="Edited some graphics" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -3391,9 +3388,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
           <caret line="11" column="69" selection-start-line="11" selection-start-column="69" selection-end-line="11" selection-end-column="69" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3411,14 +3406,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="475">
           <caret line="25" column="45" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="52" />
-          <folding>
-            <element signature="e#198#199#0" expanded="false" />
-            <element signature="e#226#227#0" expanded="false" />
-            <element signature="e#262#263#0" expanded="false" />
-            <element signature="e#290#291#0" expanded="false" />
-            <element signature="e#339#340#0" expanded="false" />
-            <element signature="e#371#372#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3483,9 +3471,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
           <caret line="11" column="69" selection-start-line="11" selection-start-column="69" selection-end-line="11" selection-end-column="69" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3503,14 +3489,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="475">
           <caret line="25" column="45" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="52" />
-          <folding>
-            <element signature="e#198#199#0" expanded="false" />
-            <element signature="e#226#227#0" expanded="false" />
-            <element signature="e#262#263#0" expanded="false" />
-            <element signature="e#290#291#0" expanded="false" />
-            <element signature="e#339#340#0" expanded="false" />
-            <element signature="e#371#372#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3596,35 +3575,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/biogame/game/Utils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="25" column="45" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="52" />
-          <folding>
-            <element signature="e#198#199#0" expanded="false" />
-            <element signature="e#226#227#0" expanded="false" />
-            <element signature="e#262#263#0" expanded="false" />
-            <element signature="e#290#291#0" expanded="false" />
-            <element signature="e#339#340#0" expanded="false" />
-            <element signature="e#371#372#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/biogame/game/BioGame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="800">
           <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/biogame/game/Resources.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="11" column="69" selection-start-line="11" selection-start-column="69" selection-end-line="11" selection-end-column="69" />
           <folding>
             <element signature="imports" expanded="false" />
           </folding>
@@ -3693,6 +3647,22 @@
             <element signature="e#1071#1072#0" expanded="true" />
             <element signature="e#1113#1114#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/biogame/game/Resources.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-389">
+          <caret line="11" column="69" selection-start-line="11" selection-start-column="69" selection-end-line="11" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/biogame/game/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="41" column="148" selection-start-line="41" selection-start-column="148" selection-end-line="41" selection-end-column="148" />
+          <folding />
         </state>
       </provider>
     </entry>

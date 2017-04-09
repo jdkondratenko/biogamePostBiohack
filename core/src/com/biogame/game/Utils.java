@@ -39,6 +39,6 @@ public final class Utils {
 
     @NotNull
     public static String getReverseAlignMessage() {
-        return "DNA is a double strand, and short \nsequence can be aligned to both \nstrands. In next levels you will see \nboth strands of long DNA. If you want \nto align short sequence to the strand, \npainted in pale colors, use button with \nan arrow to turn short sequence. \n\n\nTap to start.";
+        return "DNA is a double strand, and short \nsequence can be aligned to both \nstrands. Use arrow button \nto view second strand of long DNA. \n\n\nTap to start.";
     }
 }
