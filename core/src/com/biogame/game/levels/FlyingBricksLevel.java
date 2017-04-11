@@ -109,7 +109,7 @@ public final class FlyingBricksLevel implements GameLevel {
     private boolean gameover;
     private boolean reversed;
     private boolean showMessage;
-    private boolean muted = false;
+//    private boolean muted = false;
 
     @NotNull
     private final String currentMessage;
@@ -424,8 +424,20 @@ public final class FlyingBricksLevel implements GameLevel {
             TextureRegionDrawable textureRegionDrawable = new TextureRegionDrawable(textureRegion);
             final TextureRegion textureRegionDown = new TextureRegion(noteMutedTexture);
             TextureRegionDrawable textureRegionDrawableDown = new TextureRegionDrawable(textureRegionDown);
+            TextureRegionDrawable first;
+            TextureRegionDrawable second;
+            TextureRegionDrawable third;
+            if (!bioGame.muted) {
+                first = textureRegionDrawable;
+                second = textureRegionDrawableDown;
+                third = textureRegionDrawableDown;
+            } else {
+                first = textureRegionDrawableDown;
+                second = textureRegionDrawable;
+                third = textureRegionDrawable;
+            }
+            final ImageButton imageButton = new ImageButton(first, second, third);
 
-            final ImageButton imageButton = new ImageButton(textureRegionDrawable, textureRegionDrawableDown, textureRegionDrawableDown);
             imageButton.setPosition(mute_x, mute_y);
             imageButton.setSize(96, 96);
 
@@ -434,7 +446,7 @@ public final class FlyingBricksLevel implements GameLevel {
             imageButton.addListener(new ClickListener() {
                 @Override
                 public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                    muted = !muted;
+                    bioGame.muted = !bioGame.muted;
                     return false;
                 }
             });
@@ -476,7 +488,7 @@ public final class FlyingBricksLevel implements GameLevel {
                         .setPosition(centerTilePosition.x * BOX_TO_WORLD + tileSize / 2, centerTilePosition.y * BOX_TO_WORLD + tileSize / 2);
                 failParticleEffect.start();
 
-                if (loseMusic != null && !muted) {
+                if (loseMusic != null && !bioGame.muted) {
                     loseMusic.play();
                 }
                 decreaseHeartsNumber();
@@ -489,7 +501,7 @@ public final class FlyingBricksLevel implements GameLevel {
                         .setPosition(centerTilePosition.x * BOX_TO_WORLD + tileSize / 2, centerTilePosition.y * BOX_TO_WORLD + tileSize);
                 winParticleEffect.start();
 
-                if (winMusic != null && !muted) {
+                if (winMusic != null && !bioGame.muted) {
                     winMusic.play();
                 }
 

@@ -35,6 +35,7 @@ public class BioGame extends ApplicationAdapter {
     public Viewport viewport;
     public int GAME_WIDTH = 1080;
     public int GAME_HEIGHT = 1920;
+    public boolean muted = false;
 
     @Nullable
     private GameLevel gameLevel;
