@@ -43,7 +43,7 @@ public final class TitleScreen implements GameLevel {
 
     @Override
     public void setupUI() {
-        stage = new Stage(new ScreenViewport());
+        stage = new Stage(bioGame.viewport);
 
         setupButton();
         setupLogo();
@@ -54,7 +54,7 @@ public final class TitleScreen implements GameLevel {
         final TextureRegionDrawable textureRegionDrawable = new TextureRegionDrawable(new TextureRegion(buttonTexture));
 
         final ImageButton imageButton = new ImageButton(textureRegionDrawable);
-        imageButton.setPosition(Gdx.graphics.getWidth() / 2 - 200, (float) (Gdx.graphics.getHeight() * 0.07));
+        imageButton.setPosition(bioGame.GAME_WIDTH / 2 - 200, (float) (bioGame.GAME_HEIGHT * 0.07));
         imageButton.setSize(400, 200);
 
         stage.addActor(imageButton);
@@ -73,7 +73,7 @@ public final class TitleScreen implements GameLevel {
         final TextureRegionDrawable textureRegionDrawable = new TextureRegionDrawable(new TextureRegion(logoTexture));
 
         final Image image = new Image(textureRegionDrawable);
-        image.setPosition(Gdx.graphics.getWidth() / 2 - 250, (float) (Gdx.graphics.getHeight() * 0.47));
+        image.setPosition(bioGame.GAME_WIDTH / 2 - 250, (float) (bioGame.GAME_HEIGHT * 0.45));
 
         stage.addActor(image);
     }

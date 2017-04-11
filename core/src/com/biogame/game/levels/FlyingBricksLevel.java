@@ -208,7 +208,7 @@ public final class FlyingBricksLevel implements GameLevel {
 
     @Override
     public void setupUI() {
-        stage = new Stage(new ScreenViewport());
+        stage = new Stage(bioGame.viewport);
         hearts = createHearts();
         setupParticles();
         setupScoreText();
@@ -354,7 +354,7 @@ public final class FlyingBricksLevel implements GameLevel {
     private void setupMessageLabel() {
         final LabelStyle labelStyle = new LabelStyle();
         labelStyle.font = new BitmapFont();
-        labelStyle.font.setColor(Color.BLUE);
+        labelStyle.font.setColor(Color.LIME);
         labelStyle.font.getData().setScale(4);
         messageLabel = new Label("", labelStyle);
         messageLabel.setWrap(true);
@@ -369,7 +369,7 @@ public final class FlyingBricksLevel implements GameLevel {
             TextureRegionDrawable textureRegionDrawable = new TextureRegionDrawable(textureRegion);
 
             final ImageButton imageButton = new ImageButton(textureRegionDrawable);
-            imageButton.setPosition(width - 105, tileSize * 5);
+            imageButton.setPosition(bioGame.GAME_WIDTH - 105, tileSize * 5);
             imageButton.setSize(96, 96);
 
             stage.addActor(imageButton);
@@ -393,7 +393,7 @@ public final class FlyingBricksLevel implements GameLevel {
             TextureRegionDrawable textureRegionDrawableDown = new TextureRegionDrawable(textureRegionDown);
 
             final ImageButton imageButton = new ImageButton(textureRegionDrawable, textureRegionDrawableDown, textureRegionDrawableDown);
-            imageButton.setPosition(width - tileSize * 2f, height - tileSize * 3.5f);
+            imageButton.setPosition(bioGame.GAME_WIDTH - tileSize * 3f, bioGame.GAME_HEIGHT - tileSize * 5.5f);
             imageButton.setSize(96, 96);
 
             stage.addActor(imageButton);
@@ -556,11 +556,11 @@ public final class FlyingBricksLevel implements GameLevel {
                 final Tile tile = tileSequence.get(i);
                 final Texture texture = tile.texture;
                 final Vector2 position = tile.body.getPosition();
-                batch.draw(texture, position.x * BOX_TO_WORLD, position.y * BOX_TO_WORLD);
+                batch.draw(texture, position.x * BOX_TO_WORLD, position.y * BOX_TO_WORLD, width * 0.063f, width * 0.063f);
 
                 final int firstEntry = getFirstEntry();
                 if (mask && i >= firstEntry && i < firstEntry + 5) {
-                    batch.draw(Resources.mask, position.x * BOX_TO_WORLD, position.y * BOX_TO_WORLD);
+                    batch.draw(Resources.mask, position.x * BOX_TO_WORLD, position.y * BOX_TO_WORLD, width * 0.063f, width * 0.063f);
                 }
             }
         }
@@ -791,7 +791,7 @@ public final class FlyingBricksLevel implements GameLevel {
                 return false;
             }
 
-            if ((lastTapTime > System.currentTimeMillis() - 130 && (deltaX < 30 && deltaX > -30))
+            if ((lastTapTime > System.currentTimeMillis() - 600 && (deltaX < 20 && deltaX > -20))
                     || (compare(Math.round(read.get(0).body.getPosition().x), Math.round(genome.get(0).body.getPosition().x)) == 0 && deltaX <= 0)
                     || (compare(read.get(NUMBER_OF_TILES_IN_READ - 1).body.getPosition().x, genome.get(NUMBER_OF_TILES_IN_GENOME - 1).body.getPosition().x) == 0 && deltaX >= 0)) {
                 return false;
