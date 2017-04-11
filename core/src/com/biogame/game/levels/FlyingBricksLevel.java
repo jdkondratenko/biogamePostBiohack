@@ -79,6 +79,11 @@ public final class FlyingBricksLevel implements GameLevel {
 
     private int font_scale;
 
+    private float mute_x;
+    private float mute_y;
+    private float reverse_x;
+    private float reverse_y;
+
     private ParticleEffect levelParticleEffect;
     private ParticleEffect failParticleEffect;
     private ParticleEffect winParticleEffect;
@@ -143,15 +148,6 @@ public final class FlyingBricksLevel implements GameLevel {
         this.difficulty = difficulty;
         this.levelNumber = levelNumber;
         this.bioGame = bioGame;
-        if (width < 500) {
-            font_scale = 2;
-        } else if (width < 800) {
-            font_scale = 3;
-        } else if (width < 1200) {
-            font_scale = 4;
-        } else {
-            font_scale = 5;
-        }
 
         currentMessage = message;
         showMessage = !currentMessage.isEmpty();
@@ -161,6 +157,32 @@ public final class FlyingBricksLevel implements GameLevel {
 
         final int genomeWidth = (int) (width * 0.8);
         tileSize = genomeWidth / NUMBER_OF_TILES_IN_GENOME;
+
+        if (width < 500) {
+            font_scale = 2;
+            mute_x = bioGame.GAME_WIDTH - tileSize * 4f;
+            mute_y = bioGame.GAME_HEIGHT - tileSize * 10f;
+            reverse_x = bioGame.GAME_WIDTH - 200;
+            reverse_y = tileSize * 11;
+        } else if (width < 800) {
+            font_scale = 3;
+            mute_x = bioGame.GAME_WIDTH - tileSize * 3f;
+            mute_y = bioGame.GAME_HEIGHT - tileSize * 6f;
+            reverse_x = bioGame.GAME_WIDTH - 155;
+            reverse_y = tileSize * 7;
+        } else if (width < 1200) {
+            font_scale = 4;
+            mute_x = bioGame.GAME_WIDTH - tileSize * 2f;
+            mute_y = bioGame.GAME_HEIGHT - tileSize * 3.5f;
+            reverse_x = bioGame.GAME_WIDTH - 105;
+            reverse_y = tileSize * 5;
+        } else {
+            font_scale = 5;
+            mute_x = bioGame.GAME_WIDTH - tileSize * 2f;
+            mute_y = bioGame.GAME_HEIGHT - tileSize * 2.5f;
+            reverse_x = bioGame.GAME_WIDTH - 105;
+            reverse_y = tileSize * 5;
+        }
 
         setupSounds();
     }
@@ -380,7 +402,7 @@ public final class FlyingBricksLevel implements GameLevel {
             TextureRegionDrawable textureRegionDrawable = new TextureRegionDrawable(textureRegion);
 
             final ImageButton imageButton = new ImageButton(textureRegionDrawable);
-            imageButton.setPosition(bioGame.GAME_WIDTH - 105, tileSize * 5);
+            imageButton.setPosition(reverse_x, reverse_y);
             imageButton.setSize(96, 96);
 
             stage.addActor(imageButton);
@@ -404,7 +426,7 @@ public final class FlyingBricksLevel implements GameLevel {
             TextureRegionDrawable textureRegionDrawableDown = new TextureRegionDrawable(textureRegionDown);
 
             final ImageButton imageButton = new ImageButton(textureRegionDrawable, textureRegionDrawableDown, textureRegionDrawableDown);
-            imageButton.setPosition(bioGame.GAME_WIDTH - tileSize * 3f, bioGame.GAME_HEIGHT - tileSize * 5.5f);
+            imageButton.setPosition(mute_x, mute_y);
             imageButton.setSize(96, 96);
 
             stage.addActor(imageButton);
