@@ -77,6 +77,8 @@ public final class FlyingBricksLevel implements GameLevel {
     private final int width;
     private final int height;
 
+    private int font_scale;
+
     private ParticleEffect levelParticleEffect;
     private ParticleEffect failParticleEffect;
     private ParticleEffect winParticleEffect;
@@ -141,6 +143,15 @@ public final class FlyingBricksLevel implements GameLevel {
         this.difficulty = difficulty;
         this.levelNumber = levelNumber;
         this.bioGame = bioGame;
+        if (width < 500) {
+            font_scale = 2;
+        } else if (width < 800) {
+            font_scale = 3;
+        } else if (width < 1200) {
+            font_scale = 4;
+        } else {
+            font_scale = 5;
+        }
 
         currentMessage = message;
         showMessage = !currentMessage.isEmpty();
@@ -344,7 +355,7 @@ public final class FlyingBricksLevel implements GameLevel {
         final LabelStyle labelStyle = new LabelStyle();
         labelStyle.font = new BitmapFont();
         labelStyle.font.setColor(Color.WHITE);
-        labelStyle.font.getData().setScale(4);
+        labelStyle.font.getData().setScale(font_scale);
         levelNumberLabel = new Label("Level " + getLevelNumber().getNumber() + 1, labelStyle);
 
         levelParticleEffect.getEmitters().first().setPosition(padding + 100, hearts.get(0).body.getPosition().y * BOX_TO_WORLD - 100);
@@ -355,7 +366,7 @@ public final class FlyingBricksLevel implements GameLevel {
         final LabelStyle labelStyle = new LabelStyle();
         labelStyle.font = new BitmapFont();
         labelStyle.font.setColor(Color.LIME);
-        labelStyle.font.getData().setScale(4);
+        labelStyle.font.getData().setScale(font_scale);
         messageLabel = new Label("", labelStyle);
         messageLabel.setWrap(true);
         messageLabel.setSize(width - padding, height);
@@ -411,7 +422,7 @@ public final class FlyingBricksLevel implements GameLevel {
         final LabelStyle labelStyle = new LabelStyle();
         labelStyle.font = new BitmapFont();
         labelStyle.font.setColor(Color.RED);
-        labelStyle.font.getData().setScale(4);
+        labelStyle.font.getData().setScale(font_scale);
         gameoverLabel = new Label("Game Over!", labelStyle);
     }
 
@@ -419,7 +430,7 @@ public final class FlyingBricksLevel implements GameLevel {
         final LabelStyle labelStyle = new LabelStyle();
         labelStyle.font = new BitmapFont();
         labelStyle.font.setColor(Color.RED);
-        labelStyle.font.getData().setScale(4);
+        labelStyle.font.getData().setScale(font_scale);
         scoreLabel = new Label(String.valueOf(getScore()), labelStyle);
     }
 
