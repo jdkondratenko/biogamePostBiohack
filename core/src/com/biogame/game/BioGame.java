@@ -3,7 +3,6 @@ package com.biogame.game;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -75,7 +74,6 @@ public class BioGame extends ApplicationAdapter {
         box2DDebugRenderer.dispose();
         batch.dispose();
         assetManager.dispose();
-        Resources.dispose();
         background.dispose();
 
         if (gameLevel != null) {
