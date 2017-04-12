@@ -23,7 +23,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.biogame.game.BioGame;
 import com.biogame.game.Resources;
 import com.biogame.game.Utils;
@@ -38,8 +37,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import static com.biogame.game.Utils.getReplacementInDnaMessage;
 import static com.biogame.game.Utils.getMoreReplacementInDnaMessage;
+import static com.biogame.game.Utils.getReplacementInDnaMessage;
 import static com.biogame.game.Utils.getReverseAlignMessage;
 import static com.biogame.game.Utils.getScore;
 import static com.biogame.game.Utils.getStartGameMessage;
@@ -105,6 +104,7 @@ public final class FlyingBricksLevel implements GameLevel {
     private Texture reverseTexture;
     private Texture noteTexture;
     private Texture noteMutedTexture;
+    private Resources resources;
 
     private boolean gameover;
     private boolean reversed;
@@ -241,6 +241,7 @@ public final class FlyingBricksLevel implements GameLevel {
 
     @Override
     public void setupUI() {
+        resources = new Resources();
         stage = new Stage(bioGame.viewport);
         hearts = createHearts();
         setupParticles();
@@ -277,6 +278,8 @@ public final class FlyingBricksLevel implements GameLevel {
 
     @Override
     public void deleteResources() {
+        resources.dispose();
+
         if (reverseTexture != null) {
             reverseTexture.dispose();
         }
@@ -333,7 +336,7 @@ public final class FlyingBricksLevel implements GameLevel {
         }
 
         if (gameover) {
-            batch.draw(Resources.mask_black, 0, 0, width, height);
+            batch.draw(resources.mask_black, 0, 0, width, height);
             gameoverLabel.getStyle().font.draw(
                     batch, "Game over! Your score: " + String.valueOf(getScore()), padding, height / 2 - 100);
         } else {
@@ -343,7 +346,7 @@ public final class FlyingBricksLevel implements GameLevel {
         }
 
         if (showMessage) {
-            batch.draw(Resources.mask_black, 0, 0, width, height);
+            batch.draw(resources.mask_black, 0, 0, width, height);
             messageLabel.getStyle().font.draw(batch, currentMessage, padding / 2, height / 2 + 50);
         }
     }
@@ -605,7 +608,7 @@ public final class FlyingBricksLevel implements GameLevel {
 
                 final int firstEntry = getFirstEntry();
                 if (mask && i >= firstEntry && i < firstEntry + 5) {
-                    batch.draw(Resources.mask, position.x * BOX_TO_WORLD, position.y * BOX_TO_WORLD, width * 0.063f, width * 0.063f);
+                    batch.draw(resources.mask, position.x * BOX_TO_WORLD, position.y * BOX_TO_WORLD, width * 0.063f, width * 0.063f);
                 }
             }
         }
@@ -634,7 +637,7 @@ public final class FlyingBricksLevel implements GameLevel {
         float startPositionX = padding * WORLD_TO_BOX;
         for (int i = 0; i < NUMBER_OF_HEARTS; i++) {
             final Body body = createTile(startPositionX, (height - tileSize * 2) * WORLD_TO_BOX, true);
-            final Tile tile = Tile.withHeart(body);
+            final Tile tile = Tile.withHeart(body, resources);
             hearts.add(tile);
             startPositionX += (tileSize) * WORLD_TO_BOX;
         }
@@ -660,16 +663,16 @@ public final class FlyingBricksLevel implements GameLevel {
 
             switch (nucleotide) {
                 case 'A':
-                    tile = Tile.withLetterA(body);
+                    tile = Tile.withLetterA(body, resources);
                     break;
                 case 'C':
-                    tile = Tile.withLetterC(body);
+                    tile = Tile.withLetterC(body, resources);
                     break;
                 case 'G':
-                    tile = Tile.withLetterG(body);
+                    tile = Tile.withLetterG(body, resources);
                     break;
                 case 'T':
-                    tile = Tile.withLetterT(body);
+                    tile = Tile.withLetterT(body, resources);
                     break;
                 default:
                     throw new IllegalArgumentException("The letter is not a, c, g or t");
@@ -715,16 +718,16 @@ public final class FlyingBricksLevel implements GameLevel {
 
             switch (nucleotide) {
                 case 'A':
-                    tile = Tile.withLetterA(body);
+                    tile = Tile.withLetterA(body, resources);
                     break;
                 case 'C':
-                    tile = Tile.withLetterC(body);
+                    tile = Tile.withLetterC(body, resources);
                     break;
                 case 'G':
-                    tile = Tile.withLetterG(body);
+                    tile = Tile.withLetterG(body, resources);
                     break;
                 case 'T':
-                    tile = Tile.withLetterT(body);
+                    tile = Tile.withLetterT(body, resources);
                     break;
                 default:
                     throw new IllegalArgumentException("The letter is not a, c, g or t");
@@ -774,16 +777,16 @@ public final class FlyingBricksLevel implements GameLevel {
 
             switch (nucleotide) {
                 case 'A':
-                    tile = Tile.hintWithLetterA(body);
+                    tile = Tile.hintWithLetterA(body, resources);
                     break;
                 case 'C':
-                    tile = Tile.hintWithLetterC(body);
+                    tile = Tile.hintWithLetterC(body, resources);
                     break;
                 case 'G':
-                    tile = Tile.hintWithLetterG(body);
+                    tile = Tile.hintWithLetterG(body, resources);
                     break;
                 case 'T':
-                    tile = Tile.hintWithLetterT(body);
+                    tile = Tile.hintWithLetterT(body, resources);
                     break;
                 default:
                     throw new IllegalArgumentException("The letter is not a, c, g or t");
